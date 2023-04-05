@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<p>Recipe: </p>
+    {% if recipe %}
+        <p>{{ recipe.title }},  {{ recipe.level }},  {{ recipe.description }}</p>
+    {% else %}
+        <p>This recipe doesn't exist</p>
+    {% endif %}
+{% endblock %}

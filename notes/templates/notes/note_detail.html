@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<p>Note: </p>
+    {% if note %}
+        <p>{{ note.title }}</p>
+        <p>{{ note.textplace }}</p>
+        <p>{{ note.add_time }}</p>
+    {% else %}
+        <p>This note doesn't exist</p>
+    {% endif %}
+{% endblock %}

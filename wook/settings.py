@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap5',
     'recipes',
     'notes',
     'core',
@@ -137,4 +136,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #const for abstract user in core app
-# AUTH_USER_MODEL = 'core.User'
+# AUTH_USER_MODEL = 'core.CustomUser'

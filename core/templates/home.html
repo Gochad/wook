@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %}
+    <div class="content">
+        <h1>LOGIN OR REGISTER TO WOOK</h1>
+        <br>
+        <a href="{% url 'login' %}">LOGIN</a>
+         <br>
+        <a href="{% url 'register' %}">REGISTER</a>
+    </div>
+{% endblock %}

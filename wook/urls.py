@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .settings import STATIC_URL
 
 urlpatterns = [
     path('', include('core.urls')),

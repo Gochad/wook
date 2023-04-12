@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+    {% block title %}
+        New recipe
+    {% endblock title %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
 {% endblock %}

@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block page_content %}
-{% if user.is_authenticated %}
-    <div class="content">
-        <h1>main page wook application</h1>
-        <br>
-        <a href="{% url 'recipe_list' %}">RECIPES</a>
-        <br>
-        <a href="{% url 'note_list' %}">NOTES</a>
-    </div>
-{% else %}
-    <p>You are not logged in</p>
-    <a href="{% url 'login' %}">LOGIN</a>
-{% endif %}
+    {% block content %}
+        {% if user.is_authenticated %}
+            <div class="content">
+                <h1>main page wook application</h1>
+                <br>
+                <a href="{% url 'recipe_list' %}">RECIPES</a>
+                <br>
+                <a href="{% url 'note_list' %}">NOTES</a>
+            </div>
+        {% else %}
+            <p>You are not logged in</p>
+            <a href="{% url 'login' %}">LOGIN</a>
+        {% endif %}
+    {% endblock %}
 {% endblock %}

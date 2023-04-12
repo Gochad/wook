@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
-<p>Recipes: </p>
-    {% if recipe_list %}
-        {% for recipe in recipe_list %}
-            <li><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.title }}, {{ recipe.level }}</a></li>
-        {% endfor %}
-    {% else %}
-        <p>There are no recipes in database</p>
-    {% endif %}
-
+    {% block title %}
+        Recipe:
+    {% endblock title %}
+    {% block content %}
+        {% if recipe_list %}
+            {% for recipe in recipe_list %}
+                <li><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.title }}, {{ recipe.level }}</a></li>
+            {% endfor %}
+        {% else %}
+            <p>There are no recipes in database</p>
+        {% endif %}
+    {% endblock %}
 {% endblock %}

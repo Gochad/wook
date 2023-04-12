@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
-<p>Notes: </p>
-    {% if note_list %}
-        {% for note in note_list %}
-            <li><a href="{% url 'note_detail' note.pk %}">{{ note.title }}</a></li>
-        {% endfor %}
-    {% else %}
-        <p>There are no notes in database</p>
-    {% endif %}
-
+    {% block title %}
+        Notes:
+    {% endblock title %}
+    {% block content %}
+        {% if note_list %}
+            {% for note in note_list %}
+                <li><a href="{% url 'note_detail' note.pk %}">{{ note.title }}</a></li>
+            {% endfor %}
+        {% else %}
+            <p>There are no notes in database</p>
+        {% endif %}
+    {% endblock %}
 {% endblock %}

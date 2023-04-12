@@ -1,7 +1,6 @@
 (function() {
   let darkSwitch = document.getElementById("darkSwitch");
   if (darkSwitch) {
-    initTheme();
     darkSwitch.addEventListener("change", function(event) {
       resetTheme();
     });
@@ -12,13 +11,12 @@
       darkSwitch.checked = darkThemeSelected;
       if (darkThemeSelected) {
         document.documentElement.setAttribute("data-bs-theme", "dark")
-        let nav = document.getElementsByTagName('nav')
-        nav.classList.add("navbar-dark bg-dark")
+        document.getElementsByTagName('nav')[0].classList.toggle("navbar-dark bg-dark")
+
       }
       else {
-        document.documentElement.removeAttribute("data-bs-theme");
-        let nav = document.getElementsByTagName('nav')
-        nav.classList.remove("navbar-dark bg-dark")
+        document.documentElement.removeAttribute("data-bs-theme")
+        document.getElementsByTagName('nav')[0].classList.toggle("navbar-dark bg-dark")
       }
 
     }
@@ -26,13 +24,11 @@
       if (darkSwitch.checked) {
         document.documentElement.setAttribute("data-bs-theme", "dark");
         localStorage.setItem("darkSwitch", "dark");
-        let nav = document.getElementsByTagName('nav')
-        nav.classList.add("navbar-dark bg-dark")
+        document.getElementsByTagName('nav')[0].classList.add("navbar-dark bg-dark")
       } else {
         document.documentElement.setAttribute("data-bs-theme", "light");
         localStorage.removeItem("darkSwitch");
-        let nav = document.getElementsByTagName('nav')
-        nav.classList.remove("navbar-dark bg-dark")
+        document.getElementsByTagName('nav')[0].classList.remove("navbar-dark bg-dark")
       }
     }
   }

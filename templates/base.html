@@ -19,9 +19,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Welcome, {{user.username}}</a>
-                </li>
+                <button type="button" class="btn btn-primary">
+                    <a href="{% url 'profile' %}">YOUR PROFILE</a>
+                </button>
             {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}">Login</a>

@@ -34,7 +34,7 @@ def login_request(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = authenticate(username, password)
+            user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
                 messages.info(request, f'You are now logged in as {username}')
@@ -55,8 +55,8 @@ def logout_request(request):
 @login_required
 def profile(request):
     if request.method == 'POST':
-        user_form = UpdateUserForm(request.POST, request.user)
-        profile_form = UpdateProfileForm(request.POST, request.FILES, request.user.profile)
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
 
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
@@ -64,7 +64,7 @@ def profile(request):
             messages.success(request, 'Your profile is updated successfully')
             return redirect('profile')
     else:
-        user_form = UpdateUserForm(request.user)
-        profile_form = UpdateProfileForm(request.user.profile)
+        user_form = UpdateUserForm(instance=request.user)
+        profile_form = UpdateProfileForm(instance=request.user.profile)
 
     return render(request, 'profile.html', {'user_form': user_form, 'profile_form': profile_form})

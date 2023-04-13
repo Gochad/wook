@@ -13,7 +13,6 @@ class RecipeForm(forms.ModelForm):
 class RecipeListView(ListView):
     model = Recipe
 
-
 class RecipeDetailView(DetailView):
     model = Recipe
     context_object_name = 'recipe'
@@ -30,4 +29,7 @@ class RecipeDelete(DeleteView):
     model = Recipe
     success_url = reverse_lazy('recipes')
 
+def user_recipes(request):
+    recipes = Recipe.objects.filter(author=request.user)
+    return render(request, 'recipe_list.html', {'recipes': recipes})
 

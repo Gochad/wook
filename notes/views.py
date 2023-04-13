@@ -24,3 +24,7 @@ class NoteUpdate(UpdateView):
 class NoteDelete(DeleteView):
     model = Note
     success_url = reverse_lazy('notes')
+
+def user_notes(request):
+    notes = Note.objects.filter(author=request.user)
+    return render(request, 'note_list.html', {'notes': notes})

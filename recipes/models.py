@@ -2,6 +2,9 @@ from django.core.validators import DecimalValidator, MinValueValidator, MaxValue
 from django.db import models
 from django.urls import reverse
 
+from core.models import User
+
+
 class Ingredient(models.Model):
     name = models.CharField(max_length=255)
 
@@ -26,6 +29,7 @@ class Recipe(models.Model):
     level = models.DecimalField(max_digits=1, decimal_places=0, validators=[MinValueValidator(1), MaxValueValidator(5)])
     description = models.TextField(max_length=255)
     date = models.DateField(auto_now=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     def get_absolute_url(self):
         return reverse('recipe_detail', args=[str(self.id)])
     def __str__(self):

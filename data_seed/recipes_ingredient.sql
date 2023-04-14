@@ -1,3 +1,4 @@
+use wook;
 insert into recipes_ingredient (id, name) values (1, 'volutpat eleifend');
 insert into recipes_ingredient (id, name) values (2, 'non velit');
 insert into recipes_ingredient (id, name) values (3, 'eros');

@@ -30,6 +30,6 @@ class RecipeDelete(DeleteView):
     success_url = reverse_lazy('recipes')
 
 def user_recipes(request):
-    recipes = Recipe.objects.filter(author=request.user)
-    return render(request, 'recipe_list.html', {'recipes': recipes})
+    recipe_list = Recipe.objects.filter(author_id=request.user)
+    return render(request, 'user_recipes.html', {'recipe_list': recipe_list})
 

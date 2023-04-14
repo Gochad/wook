@@ -1,9 +1,4 @@
-create table recipes_ingredientinrecipe (
-	id INT,
-	quantity INT,
-	ingredient_id INT,
-	recipe_id INT
-);
+use wook;
 insert into recipes_ingredientinrecipe (id, quantity, ingredient_id, recipe_id) values (1, 13, 82, 30);
 insert into recipes_ingredientinrecipe (id, quantity, ingredient_id, recipe_id) values (2, 2, 260, 160);
 insert into recipes_ingredientinrecipe (id, quantity, ingredient_id, recipe_id) values (3, 1, 242, 52);

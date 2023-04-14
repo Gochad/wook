@@ -7,7 +7,6 @@ from django.urls import reverse_lazy
 class NoteListView(ListView):
     model = Note
 
-
 class NoteDetailView(DetailView):
     model = Note
     context_object_name = 'note'
@@ -15,7 +14,6 @@ class NoteDetailView(DetailView):
 class NoteCreate(CreateView):
     model = Note
     fields = ['title', 'textplace']
-    # initial = {'date': '11/06/2020'}
 
 class NoteUpdate(UpdateView):
     model = Note
@@ -26,5 +24,5 @@ class NoteDelete(DeleteView):
     success_url = reverse_lazy('notes')
 
 def user_notes(request):
-    notes = Note.objects.filter(author=request.user)
-    return render(request, 'note_list.html', {'notes': notes})
+    note_list = Note.objects.filter(author_id=request.user)
+    return render(request, 'user_notes.html', {'note_list': note_list})

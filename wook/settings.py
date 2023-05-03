@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+CORS_ORIGIN_ALLOW_ALL = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'core',
+    'authUser',
     'recipes',
     'notes',
     'photos',
@@ -100,7 +102,7 @@ DATABASES = {
 }
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
-AUTH_PWD_MODULE="django.contrib.auth.password_validation."
+AUTH_PWD_MODULE="django.contrib.authUser.password_validation."
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -141,7 +143,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #const for abstract user in core app
-AUTH_USER_MODEL = 'core.User'
+AUTH_USER_MODEL = 'authUser.User'
 
 
 MESSAGE_TAGS = {

@@ -31,5 +31,5 @@ class RecipeDelete(DeleteView):
 
 def user_recipes(request):
     recipe_list = Recipe.objects.filter(author_id=request.user)
-    return render(request, 'user_recipes.html', {'recipe_list': recipe_list})
+    return render(request, 'recipes/recipe_list.html', {'recipe_list': recipe_list})
 

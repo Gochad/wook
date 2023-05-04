@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render
 from recipes.models import Recipe
 from django.views.generic import ListView, DetailView
@@ -12,6 +13,12 @@ class RecipeForm(forms.ModelForm):
 
 class RecipeListView(ListView):
     model = Recipe
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        object_list = Recipe.objects.filter(
+            Q(title__icontains=query) | Q(description__icontains=query)
+        )
+        return object_list
 
 class RecipeDetailView(DetailView):
     model = Recipe
@@ -32,4 +39,3 @@ class RecipeDelete(DeleteView):
 def user_recipes(request):
     recipe_list = Recipe.objects.filter(author_id=request.user)
     return render(request, 'recipes/recipe_list.html', {'recipe_list': recipe_list})
-

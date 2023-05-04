@@ -5,21 +5,12 @@
         Notes:
     {% endblock title %}
     {% block content %}
-        {% if all_search_results %}
-            {% for note in all_search_results %}
-               <li><a href="{% url 'note_detail' note.pk %}">{{ note.title }}</a></li>
-            {% empty %}
-               <p>No search results</p>
+        {% if note_list %}
+            {% for note in note_list %}
+                <li><a href="{% url 'note_detail' note.pk %}">{{ note.title }}</a></li>
             {% endfor %}
-
         {% else %}
-            {% if note_list %}
-                {% for note in note_list %}
-                    <li><a href="{% url 'note_detail' note.pk %}">{{ note.title }}</a></li>
-                {% endfor %}
-            {% else %}
-                <p>There are no notes in database</p>
-            {% endif %}
+            <p>There are no notes in database</p>
         {% endif %}
     {% endblock %}
 {% endblock %}

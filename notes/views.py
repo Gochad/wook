@@ -1,13 +1,16 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from notes.models import Note
 from django.urls import reverse_lazy
+from django.db.models import Q
+from notes.models import Note
 class NoteListView(ListView):
     model = Note
     def get_queryset(self):
         query = self.request.GET.get("q")
-        object_list = Note.objects.filter(title__icontains=query)
+        object_list = Note.objects.filter(
+            Q(title__icontains=query) | Q(textplace__icontains=query)
+        )
         return object_list
 
 class NoteDetailView(DetailView):

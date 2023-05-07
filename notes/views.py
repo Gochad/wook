@@ -6,12 +6,6 @@ from django.db.models import Q
 from notes.models import Note
 class NoteListView(ListView):
     model = Note
-    def get_queryset(self):
-        query = self.request.GET.get("q")
-        object_list = Note.objects.filter(
-            Q(title__icontains=query) | Q(textplace__icontains=query)
-        )
-        return object_list
 
 class NoteDetailView(DetailView):
     model = Note

@@ -6,8 +6,10 @@ updatedb:
 	python manage.py migrate
 
 setup:
+	python3 -m pip install --user virtualenv
 	python3 -m venv env
-	source env/bin/activate
+
+requirements:
 	pip install -r requirements.txt
 
 update:
@@ -20,6 +22,6 @@ test:
 server:
 	python manage.py runserver
 
-porterr:
+porterror:
 	fuser -k 8000/tcp
 	python manage.py runserver

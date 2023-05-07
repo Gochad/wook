@@ -14,9 +14,3 @@
         {% endif %}
     {% endblock %}
 {% endblock %}
-{% block search_form %}
-    <form class="form-inline my-2 my-lg-0 d-flex" action="{% url 'recipe_list' %}">
-        <input name="q" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-{% endblock %}

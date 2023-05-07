@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django import forms
 from django.urls import reverse_lazy
+from .forms import RecipeSearchForm
 
 class RecipeForm(forms.ModelForm):
   class Meta:
@@ -13,12 +14,6 @@ class RecipeForm(forms.ModelForm):
 
 class RecipeListView(ListView):
     model = Recipe
-    def get_queryset(self):
-        query = self.request.GET.get("q")
-        object_list = Recipe.objects.filter(
-            Q(title__icontains=query) | Q(description__icontains=query)
-        )
-        return object_list
 
 class RecipeDetailView(DetailView):
     model = Recipe

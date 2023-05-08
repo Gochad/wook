@@ -3,6 +3,9 @@ from authUser.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
+from wook import settings
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(default='default.jpg', upload_to='profile_images')
@@ -18,3 +21,19 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
+
+
+class Preference(models.Model):
+    themes = (
+        ('light', 'Light Theme'),
+        ('dark', 'Dark Theme'),
+    )
+
+    preference_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    theme = models.CharField(max_length=255, choices=themes)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['user'], name='One Entry Per User')
+        ]

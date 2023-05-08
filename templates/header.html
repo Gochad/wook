@@ -12,10 +12,6 @@
                 <li><a href="{% url 'logout' %}" class="nav-link px-2 link-body-emphasis">LOGOUT</a></li>
             {% endif %}
         </ul>
-        <div class="form-check form-switch" style="line-height:24px; padding:8px; padding-left: 40px; text-align:left;">
-            <input type="checkbox" class="form-check-input" id="darkSwitch" />
-            <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-        </div>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
           <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
@@ -23,7 +19,7 @@
 
         <div class="dropdown text-end">
           <a href="{% url 'profile' %}" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            <img src="{{ profile.avatar }}" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="#">New project...</a></li>

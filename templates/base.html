@@ -11,6 +11,18 @@
 {% include 'header.html' %}
 {% include 'messages.html' %}
 {% block page_content %}{% endblock %}
-<script type="application/javascript" src="{% static 'dark_mode_switch.js' %}"></script>
+{% if user_pref.theme == 'dark' %}
+    <script>
+        (function() {
+            document.documentElement.setAttribute("data-bs-theme", "light");
+        })();
+    </script>
+{% else %}
+    <script>
+        (function() {
+            document.documentElement.setAttribute("data-bs-theme", "dark");
+        })();
+    </script>
+{% endif %}
 </body>
 </html>
